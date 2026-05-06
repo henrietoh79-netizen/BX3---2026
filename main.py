@@ -312,20 +312,17 @@ async def get_matches(
                     r = await client.get(
                         "https://v3.football.api-sports.io/fixtures",
                         headers={"x-apisports-key": APIFOOTBALL_KEY},
-                        params={"date": d})
+                        params={"date": d}
+                    )
                     
-                    
-                    # --- INSERER ICI ---
+                    # --- DEBUG BX3 ---
                     print(f"DEBUG BX3 [GENERAL] - STATUS: {r.status_code}")
                     print(f"DEBUG BX3 [GENERAL] - DATA: {r.text[:250]}")
-                    # -------------------
-
+                    
                     for m in _parse_fixtures(r.json().get("response", []), d):
                         all_matches.append(m)
-                    )
-                    for m in _parse_fixtures(r.json().get("response", []), d):
-                        all_matches.append(m)
-                except:
+                except Exception as e:
+                    print(f"DEBUG BX3 - Erreur API: {e}")
                     all_matches.extend(_demo_matches(d))
 
     seen, unique = set(), []
@@ -335,8 +332,10 @@ async def get_matches(
             unique.append(m)
 
     return MatchListResponse(
-        dates=date_list, leagues_filter=lid_list,
-        total=len(unique), matches=unique
+        dates=date_list, 
+        leagues_filter=lid_list,
+        total=len(unique), 
+        matches=unique
     )
 
 # ── ANALYSE VADIGO COMPLÈTE
