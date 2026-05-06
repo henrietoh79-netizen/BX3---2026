@@ -314,6 +314,15 @@ async def get_matches(
                         headers={"x-apisports-key": APIFOOTBALL_KEY},
                         params={"date": d}
                     )
+                    
+                    # --- INSERER ICI ---
+                    print(f"DEBUG BX3 [GENERAL] - STATUS: {r.status_code}")
+                    print(f"DEBUG BX3 [GENERAL] - DATA: {r.text[:250]}")
+                    # -------------------
+
+                    for m in _parse_fixtures(r.json().get("response", []), d):
+                        all_matches.append(m)
+                    )
                     for m in _parse_fixtures(r.json().get("response", []), d):
                         all_matches.append(m)
                 except:
