@@ -337,7 +337,6 @@ async def get_matches(
         total=len(unique), 
         matches=unique
     )
-
 # ── ANALYSE VADIGO COMPLÈTE
 @app.get("/analyse/{fixture_id}", response_model=AnalysisResponse)
 async def analyse_match(fixture_id: str, auth=Depends(verify_token)):
