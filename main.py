@@ -312,7 +312,7 @@ async def get_matches(
                     r = await client.get(
                         "https://v3.football.api-sports.io/fixtures",
                         headers={"x-apisports-key": APIFOOTBALL_KEY},
-                        params={"date": d}
+                        params={"date": d}")
                     
                     
                     # --- INSERER ICI ---
