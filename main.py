@@ -313,7 +313,7 @@ async def get_matches(
                         "https://v3.football.api-sports.io/fixtures",
                         headers={"x-apisports-key": APIFOOTBALL_KEY},
                         params={"date": d}
-                    )
+                    
                     
                     # --- INSERER ICI ---
                     print(f"DEBUG BX3 [GENERAL] - STATUS: {r.status_code}")
